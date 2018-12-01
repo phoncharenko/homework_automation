@@ -8,6 +8,10 @@ with open("data_books.json") as f:
 
 @pytest.mark.parametrize("book_data", books_data, ids=[str(d) for d in books_data])
 def test_create_book(base_url, book_data, clean_book_id):
+    """
+
+    :type clean_book_id: object
+    """
     response = requests.post(base_url + "/books", data=book_data)
     assert response.status_code == 201
     response_body = response.json()  # type: object
